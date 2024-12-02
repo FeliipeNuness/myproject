@@ -36,7 +36,7 @@ class Transactions(models.Model):
     def __str__(self):
         return f"{self.type} - {self.product.name} - {self.amount}" 
     
-class Flat(models.Model):
+class Plan(models.Model):
     name = models.CharField(max_length=200)
     monthly_price = models.DecimalField(max_digits=6, decimal_places=2)
     description = models.TextField()
@@ -48,10 +48,10 @@ class Flat(models.Model):
     
 class Signature(models.Model):
      user = models.ForeignKey('auth.User',on_delete=models.CASCADE)
-     flat = models.ForeignKey(Flat, on_delete=models.CASCADE)
+     flat = models.ForeignKey(Plan, on_delete=models.CASCADE)
      start_date = models.DateTimeField(auto_now_add=True)
      end_date = models.DateTimeField(blank=True, null=True)
      
      def __str__(self):
-         return f"{self.user.name} - {self.flat.name}"
+         return f"{self.user.name} - {self.plan.name}"
      
