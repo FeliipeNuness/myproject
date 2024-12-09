@@ -1,7 +1,7 @@
 from rest_framework import generics, views, response, status
 from rest_framework.response import Response
-from backend.models import Category, Product, Transactions, Signature, Plan
-from .serializers import CategorySerializer, ProductSerializer, Transactions, SignatureSerializer, PlanSerializer
+from backend.models import Category, Product
+from .serializers import CategorySerializer, ProductSerializer
 
 
 class CategoryCreateListView(generics.ListAPIView):

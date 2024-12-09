@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Planos Disponíveis</title>
+</head>
+<body>
+    <h1>Planos Disponíveis</h1>
+    <ul>
+        {% for plan in plans %}
+            <li>
+                <!-- Corrigido para usar a variável 'plano' -->
+                <a href="{% url 'detalhe_plano' plano.id %}">{{ plan.name }}</a> - R$ {{ plan.price }} / {{ plan.get_periodicity_display }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

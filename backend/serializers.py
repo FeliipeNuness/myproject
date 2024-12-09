@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from backend.models import Category, Product, Transactions, Plan, Signature
+from backend.models import Category, Product
 from django.contrib.auth.models import User
 
 
@@ -33,36 +33,3 @@ class ProductSerializer(serializers.ModelSerializer):
        fields = '__all__'
    
    
-class TransactionsSerializer(serializers.ModelSerializer):
-    product = ProductSerializer(read_only=True)
-    product_id = serializers.PrimaryKeyRelatedField(
-        queryset=Product.objects.all(),
-        source='product',
-        write_only=True
-        )
-    
-    class Meta:
-        model = Transactions
-        fields = '__all__'
-        
-
-class PlanSerializer(serializers.ModelSerializer):
-    
-    
-    class Meta:
-        model = Plan
-        fields = '__all__'  
-        
- 
-class SignatureSerializer(serializers.ModelSerializer):
-    user = UserSerializer(read_only=True)
-    flat = PlanSerializer(read_only=True) 
-    flat_id = serializers.PrimaryKeyRelatedField(
-        queryset=Plan.objects.all(),
-        source='flat',
-        write_only=True
-        )
-    
-    class Meta:
-        model = Signature
-        fields = '__all__'            
