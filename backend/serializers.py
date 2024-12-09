@@ -15,7 +15,8 @@ class CategorySerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Category
-        fields = '__all__'
+        fields = '__all__' #CASO NÂO QUEIRA MOSTRAR A CATEGORY NO CORPO DO JSON, DEIXE O FIELDS ASSIM:
+                            #fields = ['id', 'name', 'description']  # Remova 'product' dos campos
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -25,6 +26,7 @@ class ProductSerializer(serializers.ModelSerializer):
        source='category',
        write_only=True
        )
+   
    
    class Meta:
        model = Product
