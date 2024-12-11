@@ -14,7 +14,7 @@ class ProductAdmin(admin.ModelAdmin):
     
 @admin.register(Plan)
 class PlanAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'description', 'price', 'periodicity', 'resource')
+    list_display = ('id', 'name', 'description', 'price', 'periodicity')
    
     
 @admin.register(Signature)    
